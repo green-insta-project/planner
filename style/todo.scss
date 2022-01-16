@@ -1,0 +1,856 @@
+@import 'common.scss';
+@import 'reset.scss'; 
+
+
+
+
+:root {
+    
+    background-color: $color-main;
+    /* Main Color */
+    // --color-white: #f9f6f6;
+    --color-gray: #e6e5e5;
+    --color-gray-dark: #5d5c58;
+    --color-black: #333;
+    --color-blue-light: #dddad6;
+    --color-blue: white;
+    --color-icon: #e9d9c6;
+  
+    /* Shadow */
+    /* Blue */
+  
+    /* Gray */
+    // --shadow-light: 4px 4px 8px #ccccccf3, -4px -4px 8px #fffffff6;
+    --shadow-light-small: 2px 2px 6px #ccccccf3, -2px -2px 6px #fffffff6;
+    --shadow-light-inset: inset 4px 4px 8px #ccccccf3,
+      inset -4px -4px 8px #fffffff6;
+    --shadow-light-inset-small: inset 2px 2px 6px #ccccccf3,
+      inset -2px -2px 6px #fffffff6;
+    --shadow-gray: 4px 4px 8px #c1c0c0f3, -4px -4px 8px #fffffff6;
+    --shadow-gray-small: 2px 2px 6px #c1c0c0f3, -2px -2px 6px #fffffff6;
+    --shadow-gray-inset-small: inset 2px 2px 6px #c1c0c0f3,
+      inset -2px -2px 6px #fffffff6;
+  
+  
+    /* Size */
+    // --main-width: 500px;
+    --base-space: 10px;
+    --font-size: 14px;
+  
+    /* Animation */
+    --animation-duration: 0.3s;
+    --animation-timing: ease-in-out;
+  
+    /* Font */
+    // --font-family: 'Noto Sans KR', sans-serif;
+  }
+  
+  /* Common */
+  * {
+    box-sizing: border-box;
+  
+  }
+
+  // 메뉴바
+.navbar{
+  width: 100%;
+  @include flexbox(flex-start);
+  padding: 20px 30px;
+  // position: fixed;
+  z-index: 1;
+
+  
+  .burger-menu{
+      width: 40px; height: 20px;
+      position: relative;
+      z-index: 10;
+      transition: .5s;
+      cursor: pointer;
+
+      &.visible{ margin-left: 20%;}
+      .bar{
+          position: absolute;
+          left: 0;
+          width: 100%; height: 3px;
+          background-color: #c6c1bf;
+          transition: 0.5s;
+      }
+  }  
+  .bar:nth-child(1){ top: 0;}
+
+.bar:nth-child(2){ top: calc(50% - 1px);}
+
+.bar:nth-child(3){ bottom: 0;}
+
+.burger-menu.visible .bar{background-color: #fff;}
+.burger-menu.visible .bar:nth-child(1){
+top: calc(50% - 1px);
+transform: rotate(45deg);
+}
+.burger-menu.visible .bar:nth-child(2){
+top: calc(50% - 1px);
+opacity: 0;
+}
+.burger-menu.visible .bar:nth-child(3){
+bottom: calc(50% - 1px);
+transform: rotate(-45deg);
+}
+
+
+
+.menubox{
+@include column-flexbox;
+position: absolute;
+top: 0; left: -25%;
+width: 25%; height: 100%;
+background-color: $color-main;
+transition: 0.5s;
+z-index: inherit;
+
+&.visible{
+  left: 0;
+  border: 1px solid #ddd;
+}
+}
+
+
+.item{
+width: 100%;
+padding: 0 30px;
+margin: 0;
+text-align: center;
+cursor: pointer;
+
+a{
+  text-decoration: none;
+  color: #5d5c58;
+  font-size: $font-size-32;
+  font-style: italic;
+  font-weight: 500;
+  padding-left: 10px;
+  transition: .3s;
+
+  &:hover{
+    color: #fff;
+  }
+
+  li{
+    font-family: $font-con;
+    padding: 10px;
+  }
+}
+}
+}
+
+// 메뉴바 끝
+
+
+  
+  body,
+  input,
+  textarea,
+  button {
+    color: var(--color-black);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+  }
+  
+  button {
+    padding: var(--base-space);
+    border-radius: calc(var(--base-space) / 2);
+    background-color: var(--color-gray-light);
+    box-shadow: var(--shadow-light);
+    transition: box-shadow var(--animation-duration) var(--animation-timing);
+    font-weight: bold;
+  }
+  button.gray {
+    background-color: var(--color-gray);
+    box-shadow: var(--shadow-gray);
+  }
+  button.dark {
+    background-color: var(--color-gray-dark);
+    box-shadow: var(--shadow-dark);
+  }
+  button.blue {
+    background-color: var(--color-blue);
+    box-shadow: var(--shadow-blue);
+  }
+  
+  button:hover {
+    box-shadow: var(--shadow-light-small);
+  }
+  button.gray:hover {
+    box-shadow: var(--shadow-gray-small);
+  }
+  button.dark:hover {
+    box-shadow: var(--shadow-dark-small);
+  }
+  button.blue:hover {
+    box-shadow: var(--shadow-blue-small);
+  }
+  
+  button:active {
+    box-shadow: var(--shadow-light-inset-small);
+  }
+  button.gray:active {
+    box-shadow: var(--shadow-gray-inset-small);
+  }
+  button.dark:active {
+    box-shadow: var(--shadow-dark-inset-small);
+  }
+  button.blue:active {
+    box-shadow: var(--shadow-blue-inset-small);
+  }
+  
+  svg {
+    fill: var(--color-blue-dark);
+  }
+  
+  svg.black {
+    fill: var(--color-black);
+  }
+  
+  /* Layout */
+  body {
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--color-gray-light);
+  }
+  
+  .categories {
+    display: flex;
+    margin-bottom: calc(var(--base-space) * 2);
+  }
+  
+  .categories .btn:not(:last-of-type) {
+    margin-right: var(--base-space);
+  }
+  
+  main {
+    position: relative;
+    width: var(--main-width);
+    border-radius: var(--base-space);
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-light);
+}
+  
+  .main-header {
+    font-family:  $font-main;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: var(--main-width);
+    padding: calc(var(--base-space) * 2);
+    border-radius: var(--base-space) var(--base-space) 0 0;
+    background-color: var(--color-blue);
+    background: $color-gray;
+
+
+
+
+
+  }
+  .main-header h1 {
+      color: white;
+      font-size: calc(var(--font-size) * 1.5);
+      //수정
+      padding: 0 180px;
+      
+  }
+  
+  .main-container {
+    overflow-y: auto;
+    max-height: 80vh;
+    margin-top: 78px;
+  }
+  .add-on .main-container {
+    margin-top: 0;
+  }
+  
+  /* Add Todo Area */
+  .add-todo {
+    display: none;
+    margin-top: 0;
+  }
+  .add-on .add-todo {
+    display: block;
+    margin-top: 78px;
+    background-color: var(--color-blue);
+  }
+  .add-todo .buttons {
+    padding: var(--base-space);
+    font-family: $font-con;
+  }
+  .add-todo .btn {
+    font-size: calc(var(--font-size) * 0.9);
+  }
+  .btn.add {
+    color: var(--color-blue-dark);
+  }
+  .border-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 calc(var(--base-space) * 2);
+    border: 3px solid var(--color-blue-dark);
+    border-radius: calc(var(--base-space) / 2);
+    background-color: var(--color-gray-light);
+  }
+  .txtarea {
+    height: 80px;
+    margin: var(--base-space) var(--base-space) 0;
+    padding: var(--base-space);
+    border-radius: calc(var(--base-space) / 2);
+    background-color: var(--color-gray-light);
+    box-shadow: var(--shadow-light-inset);
+    resize: none;
+  }
+  
+  /* ToDoList */
+  /* Header */
+  .todos-header {
+    padding: var(--base-space) calc(var(--base-space) * 16.5);
+    // padding: 10px 100px;
+    
+    
+  }
+  .todos-header h2 {
+    color: black;
+    font-size: var(--font-size);
+    font-weight:800;
+    font-family: $font-con;
+    
+  }
+  
+  
+  .incomplete .todos-header {
+    background-color: var(--color-blue-light);
+    
+  }
+  
+  .complete .todos-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-radius: 0 0 var(--base-space) var(--base-space);
+    background-color: var(--color-gray-dark);
+    background: $color-green;
+    
+    }
+  .complete .todos-header h2 {
+    color: white;
+    margin-right: var(--base-space);
+    text-decoration: underline;
+    cursor: pointer;
+    
+  }
+  
+  /* List */
+  .complete .todos {
+    display: none;
+  }
+  .complete .todos.display {
+    display: block;
+  }
+  
+  .todo {
+    display: flex;
+    align-items: center;
+    padding: calc(var(--base-space) * 2);
+    margin-bottom: calc(var(--base-space) / 2);
+  }
+  .incomplete .todo {
+    background-color: var(--color-gray-light);
+  }
+  .complete .todo {
+    background-color: var(--color-gray);
+  }
+  .complete .todo:last-of-type {
+    margin-bottom: 0;
+  }
+  
+  .title {
+    word-break: break-all;
+    width: 70%;
+    padding: 0 var(--base-space);
+    font-size: calc(var(--font-size) * 1.1);
+    font-family: $font-con;
+  }
+  .edit-on .title {
+    display: none;
+  }
+  .complete .title {
+    text-decoration: line-through;
+    font-family: $font-con;
+  }
+  
+  .input {
+    display: none;
+    margin-left: var(--base-space);
+    padding: calc(var(--base-space) / 2);
+    border-radius: calc(var(--base-space) / 2);
+    background-color: var(--color-gray-light);
+    box-shadow: var(--shadow-light-inset);
+  }
+  .txtarea:active,
+  .txtarea:focus,
+  .input:active,
+  .input:focus {
+    box-shadow: var(--shadow-light-inset-small);
+    font-family: $font-con;
+  }
+  .edit-on .input {
+    display: block;
+  }
+  
+  .buttons {
+    display: flex;
+    margin-left: auto;
+  }
+  .buttons .btn:not(:last-of-type) {
+    margin-right: var(--base-space);
+  }
+  .btn.check,
+  .btn.delete-all {
+    padding: 0;
+  }
+  
+
+
+  // 반응형
+  // 아이패드 기준 768px - 1024px
+  // 모바일 기준 360px - 767px
+
+// 아이패드 기준 768px - 1024px
+  @media (max-width: 1024px){
+/* Layout */
+body {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--color-gray-light);
+  margin: 0 auto;
+}
+
+.categories {
+  display: flex;
+  margin-bottom: calc(var(--base-space) * 2);
+}
+
+.categories .btn:not(:last-of-type) {
+  margin-right: var(--base-space);
+}
+
+main {
+  position: relative;
+  width: var(--main-width);
+  margin: 0 auto;
+  border-radius: var(--base-space);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-light);
+}
+
+.main-header {
+  font-family:  $font-main;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: var(--main-width);
+  padding: calc(var(--base-space) * 2);
+  border-radius: var(--base-space) var(--base-space) 0 0;
+  background-color: var(--color-blue);
+  background: $color-gray;
+
+
+
+
+
+}
+.main-header h1 {
+    color: white;
+  font-size: calc(var(--font-size) * 1.5);
+  padding: 0 170px;
+}
+
+.main-container {
+  overflow-y: auto;
+  max-height: 80vh;
+  margin-top: 78px;
+
+}
+.add-on .main-container {
+  margin-top: 0;
+}
+
+/* Add Todo Area */
+.add-todo {
+  display: none;
+  margin-top: 0;
+}
+.add-on .add-todo {
+  display: block;
+  margin-top: 78px;
+  background-color: var(--color-blue);
+}
+.add-todo .buttons {
+  padding: var(--base-space);
+  font-family: $font-con;
+}
+.add-todo .btn {
+  font-size: calc(var(--font-size) * 0.9);
+}
+.btn.add {
+  color: var(--color-blue-dark);
+}
+.border-container {
+  //수정
+  display: flex;
+  flex-direction: column;
+  margin: 0 calc(var(--base-space) );
+  border: 3px solid var(--color-blue-dark);
+  border-radius: calc(var(--base-space) / 2);
+  background-color: var(--color-gray-light);
+}
+.txtarea {
+  //수정
+  height: 80px;
+  margin: var(--base-space) var(--base-space);
+  padding: var(--base-space) / 2;
+  border-radius: calc(var(--base-space) / 3);
+  background-color: var(--color-gray-light);
+  box-shadow: var(--shadow-light-inset);
+  resize: none;
+}
+
+/* ToDoList */
+/* Header */
+.todos-header {
+  padding: var(--base-space) calc(var(--base-space) * 15.5);
+  
+}
+.todos-header h2 {
+  color: black;
+  font-size: var(--font-size);
+  font-weight:800;
+  font-family: $font-con;
+  
+}
+
+
+.incomplete .todos-header {
+  background-color: var(--color-blue-light);
+}
+
+.complete .todos-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: 0 0 var(--base-space) var(--base-space);
+  background-color: var(--color-gray-dark);
+  background: $color-green;
+}
+.complete .todos-header h2 {
+  color: white;
+  margin-right: var(--base-space);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* List */
+.complete .todos {
+  display: none;
+}
+.complete .todos.display {
+  display: block;
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  padding: calc(var(--base-space) * 2);
+  margin-bottom: calc(var(--base-space) / 2);
+}
+.incomplete .todo {
+  background-color: var(--color-gray-light);
+}
+.complete .todo {
+  background-color: var(--color-gray);
+}
+.complete .todo:last-of-type {
+  margin-bottom: 0;
+}
+
+.title {
+  word-break: break-all;
+  width: 70%;
+  padding: 0 var(--base-space);
+  font-size: calc(var(--font-size) * 1.1);
+  font-family: $font-con;
+}
+.edit-on .title {
+  display: none;
+}
+.complete .title {
+  text-decoration: line-through;
+  font-family: $font-con;
+}
+
+.input {
+  display: none;
+  margin-left: var(--base-space);
+  padding: calc(var(--base-space) / 2);
+  border-radius: calc(var(--base-space) / 2);
+  background-color: var(--color-gray-light);
+  box-shadow: var(--shadow-light-inset);
+}
+.txtarea:active,
+.txtarea:focus,
+.input:active,
+.input:focus {
+  box-shadow: var(--shadow-light-inset-small);
+  font-family: $font-con;
+}
+.edit-on .input {
+  display: block;
+}
+
+.buttons {
+  display: flex;
+  margin-left: auto;
+}
+.buttons .btn:not(:last-of-type) {
+  margin-right: var(--base-space);
+}
+.btn.check,
+.btn.delete-all {
+  padding: 0;
+}
+
+  }
+
+
+ // 모바일 기준 360px - 767px
+ @media (max-width: 767px){
+/* Layout */
+body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: var(--color-gray-light);
+
+}
+
+.categories {
+  display: flex;
+  margin-bottom: calc(var(--base-space) * 2);
+}
+
+.categories .btn:not(:last-of-type) {
+  margin-right: var(--base-space);
+}
+
+main {
+  position: relative;
+  //수정
+  // padding: 0 70px;
+  width: var(--main-width);
+  border-radius: var(--base-space);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-light);
+}
+
+.main-header {
+  font-family:  $font-main;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: var(--main-width);
+  padding: calc(var(--base-space) * 2);
+  border-radius: var(--base-space) var(--base-space) 0 0;
+  background-color: var(--color-blue);
+  background: $color-gray;
+
+
+
+
+
+}
+.main-header h1 {
+    color: white;
+  font-size: calc(var(--font-size) * 1.5);
+  //수정
+ padding: 0 85px;
+}
+
+.main-container {
+  overflow-y: auto;
+  max-height: 80vh;
+  margin-top: 78px;
+  //수정
+  // padding: 0 10px;
+}
+.add-on .main-container {
+  margin-top: 0;
+}
+
+/* Add Todo Area */
+.add-todo {
+  display: none;
+  margin-top: 0;
+}
+.add-on .add-todo {
+  display: block;
+  margin-top: 78px;
+  background-color: var(--color-blue);
+}
+.add-todo .buttons {
+  padding: var(--base-space);
+  font-family: $font-con;
+}
+.add-todo .btn {
+  font-size: calc(var(--font-size) * 0.9);
+}
+.btn.add {
+  color: var(--color-blue-dark);
+}
+.border-container {
+  //수정
+  display: flex;
+  flex-direction: column;
+  margin: 0 calc(var(--base-space) );
+  border: 3px solid var(--color-blue-dark);
+  border-radius: calc(var(--base-space) / 2);
+  background-color: var(--color-gray-light);
+}
+.txtarea {
+  //수정
+  height: 80px;
+  margin: var(--base-space) var(--base-space);
+  padding: var(--base-space) / 2;
+  border-radius: calc(var(--base-space) / 3);
+  background-color: var(--color-gray-light);
+  box-shadow: var(--shadow-light-inset);
+  resize: none;
+}
+
+/* ToDoList */
+/* Header */
+.todos-header {
+  padding: var(--base-space) calc(var(--base-space) * 7);
+  
+}
+.todos-header h2 {
+  color: black;
+  font-size: var(--font-size);
+  font-weight:800;
+  font-family: $font-con;
+  
+}
+
+
+.incomplete .todos-header {
+  background-color: var(--color-blue-light);
+}
+
+.complete .todos-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: 0 0 var(--base-space) var(--base-space);
+  background-color: var(--color-gray-dark);
+  background: $color-green;
+}
+.complete .todos-header h2 {
+  color: white;
+  margin-right: var(--base-space);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* List */
+.complete .todos {
+  display: none;
+}
+.complete .todos.display {
+  display: block;
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  padding: calc(var(--base-space) * 2);
+  margin-bottom: calc(var(--base-space) / 2);
+}
+.incomplete .todo {
+  background-color: var(--color-gray-light);
+}
+.complete .todo {
+  background-color: var(--color-gray);
+}
+.complete .todo:last-of-type {
+  margin-bottom: 0;
+}
+
+.title {
+  word-break: break-all;
+  width: 70%;
+  padding: 0 var(--base-space);
+  font-size: calc(var(--font-size) * 1.1);
+  font-family: $font-con;
+}
+.edit-on .title {
+  display: none;
+}
+.complete .title {
+  text-decoration: line-through;
+  font-family: $font-con;
+}
+
+.input {
+  display: none;
+  margin-left: var(--base-space);
+  padding: calc(var(--base-space) / 2);
+  border-radius: calc(var(--base-space) / 2);
+  background-color: var(--color-gray-light);
+  box-shadow: var(--shadow-light-inset);
+}
+.txtarea:active,
+.txtarea:focus,
+.input:active,
+.input:focus {
+  box-shadow: var(--shadow-light-inset-small);
+  font-family: $font-con;
+}
+.edit-on .input {
+  display: block;
+}
+
+.buttons {
+  display: flex;
+  margin-left: auto;
+}
+.buttons .btn:not(:last-of-type) {
+  margin-right: var(--base-space);
+}
+.btn.check,
+.btn.delete-all {
+  padding: 0;
+}
+
+ } 
+
+
+
+
+ 

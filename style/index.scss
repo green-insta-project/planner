@@ -1,0 +1,357 @@
+@import './common.scss';
+@import './reset.scss';
+
+body{
+  position: relative;
+  background-color: #f5f4f0;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+}
+
+main{ 
+  height: 100%;
+  @include column-flexbox(space-between, center);
+}
+.navbar-menu{
+  width: 100%; height: 60px;
+  @include flexbox(flex-start);
+  position: fixed;
+  z-index: 1;
+
+  .burger-menu{
+    width: 40px; height: 20px;
+    margin-left: 20px;
+    position: relative;
+    z-index: 10;
+    transition: .5s;
+    cursor: pointer;
+
+    &.visible{ margin-left: 20%;}
+    .bar{
+      position: absolute;
+      left: 0;
+      width: 100%; height: 3px;
+      background-color: #c6c1bf;
+      transition: 0.5s;
+    }
+    
+  }  
+}
+
+
+
+
+
+.note{
+  width: 35%; 
+  @include column-flexbox(center,center);
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 7%;
+  // background-color: #c8beb5;
+  // background-color: $color-main;
+
+  .index-img{
+    width: 60%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 50%;
+  
+    img{
+      max-width: 100%;
+      height: 100%;
+      object-fit: cover;  
+    }
+  }
+
+  .time{
+    width: 100%;
+  
+    .clock{
+      text-align: right;
+      font-size: $font-size-48;
+      font-weight: 400;
+      padding-right: 25px;
+      color: $color-gray;
+      /* margin: 0 0 20px; */
+      /* cursor: pointer; */
+    }
+  }
+
+  .ellipse{
+    position: absolute;
+    width: 300px;
+    height: 600px;
+    border: 1px solid $color-gray;
+    border-radius: 50%;
+    transform: rotate(45deg);
+  }
+}
+
+
+
+
+
+
+
+.planner{
+  position: absolute;
+  top: 25%; left: 43%;
+  font-family: $font-main;
+  font-size: $font-size-80;
+  font-style: italic;
+  font-weight: 500;
+  color: $color-gray;
+  transform: translateY(-100%);
+  transition: .5s;
+  opacity: 0;
+
+  &.active{
+    opacity: 1;
+    transform: translateY(0);  
+  }
+}
+
+
+
+
+
+
+.bar:nth-child(1){ top: 0;}
+
+.bar:nth-child(2){ top: calc(50% - 1px);}
+
+.bar:nth-child(3){ bottom: 0;}
+
+.burger-menu.visible .bar{background-color: #fff;}
+.burger-menu.visible .bar:nth-child(1){
+  top: calc(50% - 1px);
+  transform: rotate(45deg);
+}
+.burger-menu.visible .bar:nth-child(2){
+  top: calc(50% - 1px);
+  opacity: 0;
+}
+.burger-menu.visible .bar:nth-child(3){
+  bottom: calc(50% - 1px);
+  transform: rotate(-45deg);
+}
+
+
+
+.menubox{
+  @include column-flexbox;
+  position: fixed;
+  top: 0; left: -25%;
+  width: 25%; height: 100%;
+  background-color: $color-main;
+  transition: 0.5s;
+
+  &.visible{
+    left: 0;
+    border: 1px solid #ddd;
+  }
+}
+
+
+.item{
+  width: 100%;
+  padding: 0 30px;
+  margin: 0;
+  cursor: pointer;
+  text-align: center;
+
+  a{
+    text-decoration: none;
+    color: #5d5c58;
+    font-size: $font-size-32;
+    font-style: italic;
+    font-weight: 500;
+    padding-left: 10px;
+    transition: .3s;
+
+    &:hover{
+      color: #fff;
+      // color: #babd11;
+    }
+
+    li{
+      font-family: $font-con;
+      padding: 10px;
+    }
+  }
+}
+
+
+.userbox{
+  width: 100%;
+  // height: 10%;
+  // margin-top: 5%;
+  background: linear-gradient(to right, #c8beb5, #bdbcbb);
+  ul{
+    @include flexbox(space-around, center);
+    width: 50%;
+    margin: 0 auto;
+    
+    li{
+      width: calc(100%/5);
+      font-size: 1.5rem;
+      padding: 15px 10px;
+      cursor: pointer;
+
+      a{
+        position: relative;
+        @include column-flexbox;
+        text-align: center;
+        width: 100%;
+
+        .icon{
+          // line-height: 100px;
+          font-size: 3rem;
+          transition: .5s;
+          color: $color-main;
+          opacity: 0;
+        }
+        .user{
+          @include pos-center;
+          font-family: $font-con;
+          transition: .5s;
+          color: $color-main;
+        }  
+      }
+      
+      &.visible a .icon{
+        opacity: 1;
+      }
+      &.visible a .user{
+        opacity: 0;
+      }
+    }
+  }  
+}
+
+@media (min-width: 1024px) {
+  .note{
+    min-width: 35%;
+    .index-img{
+      min-width: 350px;
+    }  
+  }
+}
+
+// 1024px 미만(테블릿 버전)
+@media (max-width: 1024px) {
+  .navbar-menu{
+    .burger-menu{
+      &.visible{
+        margin-left: 20%; 
+      }
+    }
+  }
+
+  .note {
+    flex-basis: 80%;
+    .index-img{
+      width: 100%;
+    }
+    .time{
+      .clock{
+        font-size: $font-size-32;
+      }
+    }
+  }
+  .note .ellipse {
+    width: 250px;
+    height: 550px;
+  }
+  .planner{
+    font-size: $font-size-64;
+    top: 30%;
+    left: 40%;
+  }
+
+  .menubox{
+    width: 30%;
+    left: -30%;
+  }
+  .userbox{
+    ul{
+      width: 80%;
+    }
+  }
+
+}
+
+
+// 768px 이하 (모바일)
+@media (max-width: 768px) {
+  .menubox{
+    // display: none;
+    left: 0;
+    width: 100%;
+    height: 0;
+    transition: 0.7s;
+    .item{
+      @include column-flexbox;
+      display: none;
+      padding: 0;
+      transition: .5s;
+      a{
+        width: 100%;
+        padding: 10px;
+        li{
+          padding: 0;
+          font-size: $font-size-24;
+        }
+      }
+    }
+    &.visible{
+      height: 90%;
+      .item{
+        display: flex;
+      }
+    }
+  }
+
+  .navbar-menu .burger-menu.visible {
+    margin-left: 20px;
+  }
+  .note {
+    width: 70%;
+    flex-basis: 80%;
+    margin-top: 15%;
+    // padding-top: 100px;
+    .index-img{
+      width: 100%;
+      max-width: 330px;
+      height: 400px;
+    }
+    .time{
+      .clock{
+        font-size: $font-size-32;
+      }
+    }
+  }
+  .note .ellipse {
+    display: none;
+  }
+  .planner {
+    top: 30%;
+    left: 35%;
+    font-size: $font-size-48;
+  }
+  .userbox {
+    height: 10%;
+    ul{
+      width: 100%;
+      height: 100%;
+      li{
+        padding: 0;
+      }
+    }
+  }
+  .userbox ul li a .user{ font-size: $font-size-16;}
+  .navbar-menu .burger-menu .bar{ width: 80%; }
+}
+
