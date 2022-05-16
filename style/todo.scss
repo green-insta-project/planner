@@ -52,31 +52,67 @@
   }
 
   // 메뉴바
-.navbar{
-  width: 100%;
-  @include flexbox(flex-start);
-  padding: 20px 30px;
-  // position: fixed;
-  z-index: 1;
 
-  
-  .burger-menu{
-      width: 40px; height: 20px;
-      position: relative;
-      z-index: 10;
-      transition: .5s;
-      cursor: pointer;
+  .navbar-menu{
+    width: 100%; height: 60px;
+    @include flexbox(flex-start);
+    position: fixed;
+    z-index: 10;
+    .burger-menu{
+        width: 40px; height: 20px;
+        margin-left: 20px;
+        position: relative;
+        z-index: 10;
+        transition: .5s;
+        cursor: pointer;
+        &.visible{ margin-left: 20%;}
+        .bar{
+            position: absolute;
+            left: 0;
+            width: 100%; height: 3px;
+            background-color: #c6c1bf;
+            transition: 0.5s;
+        }
+    }
 
-      &.visible{ margin-left: 20%;}
-      .bar{
-          position: absolute;
-          left: 0;
-          width: 100%; height: 3px;
-          background-color: #c6c1bf;
-          transition: 0.5s;
-      }
-  }  
-  .bar:nth-child(1){ top: 0;}
+    .menubox{
+        @include column-flexbox;
+        position: fixed;
+        top: 0; left: -25%;
+        width: 25%; height: 100%;
+        background-color: $color-main;
+        transition: 0.5s;
+        &.visible{
+            left: 0;
+            border: 1px solid #ddd;
+        }
+        .item{
+            width: 100%;
+            padding: 0 30px;
+            margin: 0;
+            text-align: center;
+            cursor: pointer;
+            a{
+                text-decoration: none;
+                color: #5d5c58;
+                font-size: $font-size-32;
+                font-style: italic;
+                font-weight: 500;
+                padding-left: 10px;
+                transition: .3s;
+                &:hover{
+                    color: #fff;
+                }
+
+                li{
+                font-family: $font-con;
+                padding: 10px;
+                }
+            }
+        }
+    }
+}
+.bar:nth-child(1){ top: 0;}
 
 .bar:nth-child(2){ top: calc(50% - 1px);}
 
@@ -84,17 +120,20 @@
 
 .burger-menu.visible .bar{background-color: #fff;}
 .burger-menu.visible .bar:nth-child(1){
-top: calc(50% - 1px);
-transform: rotate(45deg);
+  top: calc(50% - 1px);
+  transform: rotate(45deg);
 }
 .burger-menu.visible .bar:nth-child(2){
-top: calc(50% - 1px);
-opacity: 0;
+  top: calc(50% - 1px);
+  opacity: 0;
 }
 .burger-menu.visible .bar:nth-child(3){
-bottom: calc(50% - 1px);
-transform: rotate(-45deg);
+  bottom: calc(50% - 1px);
+  transform: rotate(-45deg);
 }
+
+
+
 
 
 
@@ -239,7 +278,6 @@ a{
   
   .main-header {
     font-family:  $font-main;
-    position: absolute;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -265,7 +303,6 @@ a{
   .main-container {
     overflow-y: auto;
     max-height: 80vh;
-    margin-top: 78px;
   }
   .add-on .main-container {
     margin-top: 0;
@@ -363,7 +400,7 @@ a{
     margin-bottom: calc(var(--base-space) / 2);
   }
   .incomplete .todo {
-    background-color: var(--color-gray-light);
+    background-color: var(--color-gray);
   }
   .complete .todo {
     background-color: var(--color-gray);
@@ -425,7 +462,7 @@ a{
   // 모바일 기준 360px - 767px
 
 // 아이패드 기준 768px - 1024px
-  @media (max-width: 1024px){
+@media (max-width: 1024px){
 /* Layout */
 body {
   display: flex;
@@ -457,7 +494,6 @@ main {
 
 .main-header {
   font-family:  $font-main;
-  position: absolute;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -481,8 +517,6 @@ main {
 .main-container {
   overflow-y: auto;
   max-height: 80vh;
-  margin-top: 78px;
-
 }
 .add-on .main-container {
   margin-top: 0;
@@ -577,7 +611,7 @@ main {
   margin-bottom: calc(var(--base-space) / 2);
 }
 .incomplete .todo {
-  background-color: var(--color-gray-light);
+  background-color: var(--color-gray);
 }
 .complete .todo {
   background-color: var(--color-gray);
@@ -636,7 +670,7 @@ main {
 
 
  // 모바일 기준 360px - 767px
- @media (max-width: 767px){
+@media screen and (max-width: 767px){
 /* Layout */
 body {
   width: 100%;
@@ -671,7 +705,6 @@ main {
 
 .main-header {
   font-family:  $font-main;
-  position: absolute;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -696,9 +729,6 @@ main {
 .main-container {
   overflow-y: auto;
   max-height: 80vh;
-  margin-top: 78px;
-  //수정
-  // padding: 0 10px;
 }
 .add-on .main-container {
   margin-top: 0;
@@ -793,7 +823,7 @@ main {
   margin-bottom: calc(var(--base-space) / 2);
 }
 .incomplete .todo {
-  background-color: var(--color-gray-light);
+  background-color: var(--color-gray);
 }
 .complete .todo {
   background-color: var(--color-gray);
@@ -848,7 +878,46 @@ main {
   padding: 0;
 }
 
- } 
+
+
+
+
+
+.navbar-menu{
+  .menubox{
+      left: 0;
+      width: 100%;
+      height: 0;
+      transition: 0.7s;
+      .item{
+          @include column-flexbox;
+          display: none;
+          padding: 0;
+          transition: .5s;
+          a{
+          width: 100%;
+          padding: 10px;
+              li{
+                  padding: 0;
+                  font-size: 24px
+              }
+          }
+      }
+      &.visible{
+          height: 100%;
+          .item{
+              display: flex;
+              // opacity: 1;
+          }
+      }
+  }    
+}
+.navbar-menu .burger-menu.visible { margin-left: 20px; }
+.navbar-menu .burger-menu .bar{ width: 80%; }
+
+
+
+} 
 
 
 

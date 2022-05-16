@@ -86,7 +86,7 @@ html, body {
       -ms-flex-align: center;
           align-items: center;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
 }
 
 .navbar-menu .burger-menu {
@@ -112,6 +112,63 @@ html, body {
   background-color: #c6c1bf;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+}
+
+.navbar-menu .menubox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  top: 0;
+  left: -25%;
+  width: 25%;
+  height: 100%;
+  background-color: #ede6de;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.navbar-menu .menubox.visible {
+  left: 0;
+  border: 1px solid #ddd;
+}
+
+.navbar-menu .menubox .item {
+  width: 100%;
+  padding: 0 30px;
+  margin: 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.navbar-menu .menubox .item a {
+  text-decoration: none;
+  color: #5d5c58;
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: 500;
+  padding-left: 10px;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.navbar-menu .menubox .item a:hover {
+  color: #fff;
+}
+
+.navbar-menu .menubox .item a li {
+  font-family: "Roboto", sans-serif;
+  padding: 10px;
 }
 
 .bar:nth-child(1) {
@@ -145,63 +202,6 @@ html, body {
   bottom: calc(50% - 1px);
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
-}
-
-.menubox {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: fixed;
-  top: 0;
-  left: -25%;
-  width: 25%;
-  height: 100%;
-  background-color: #ede6de;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.menubox.visible {
-  left: 0;
-  border: 1px solid #ddd;
-}
-
-.item {
-  width: 100%;
-  padding: 0 30px;
-  margin: 0;
-  cursor: pointer;
-  text-align: center;
-}
-
-.item a {
-  text-decoration: none;
-  color: #5d5c58;
-  font-size: 2rem;
-  font-style: italic;
-  font-weight: 500;
-  padding-left: 10px;
-  -webkit-transition: .3s;
-  transition: .3s;
-}
-
-.item a:hover {
-  color: #fff;
-}
-
-.item a li {
-  font-family: "Roboto", sans-serif;
-  padding: 10px;
 }
 
 main {
@@ -303,14 +303,14 @@ canvas {
 }
 
 @media (max-width: 768px) {
-  .menubox {
+  .navbar-menu .menubox {
     left: 0;
     width: 100%;
     height: 0;
     -webkit-transition: 0.7s;
     transition: 0.7s;
   }
-  .menubox .item {
+  .navbar-menu .menubox .item {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -329,18 +329,18 @@ canvas {
     -webkit-transition: .5s;
     transition: .5s;
   }
-  .menubox .item a {
+  .navbar-menu .menubox .item a {
     width: 100%;
     padding: 10px;
   }
-  .menubox .item a li {
+  .navbar-menu .menubox .item a li {
     padding: 0;
-    font-size: 1.5rem;
+    font-size: 24px;
   }
-  .menubox.visible {
-    height: 90%;
+  .navbar-menu .menubox.visible {
+    height: 100%;
   }
-  .menubox.visible .item {
+  .navbar-menu .menubox.visible .item {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -348,7 +348,7 @@ canvas {
   .navbar-menu .burger-menu.visible {
     margin-left: 20px;
   }
-  .navbar .burger-menu .bar {
+  .navbar-menu .burger-menu .bar {
     width: 80%;
   }
 }

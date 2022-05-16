@@ -7,45 +7,46 @@
     <title>ToDoList</title>
     <!-- CSS -->
     <link rel="stylesheet" href="./style/todo.css" />
-    
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto:ital,wght@0,400;0,700;1,300&display=swap"
+      rel="stylesheet"
+    />
     <!-- Script -->
     <script src="./js/todo.js" type="module" defer></script>
-    
-
   </head>
   <body>
-
     <!-- 메뉴 바 -->
-<div class="navbar">
-  <div class="burger-menu">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-  </div>        
-  <div class="menubox">
-      <ul class="item">
-          <a href="index.html">
-              <li> Home </li>
-          </a>
+    <div class="navbar">
+      <nav class="navbar-menu">
+        <div class="burger-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <div class="menubox">
+          <ul class="item">
+            <a href="index.html">
+              <li>Home</li>
+            </a>
 
-          <a href="schedule.html">
-              <li> Schedule </li>
-          </a>
-          
-          <a href="todo.html">
-              <li>To do </li>
-          </a>
-          
-          <a href="memo.html">
-              <li>Memo </li>
-          </a>
-      </ul>
-  </div>
-</div>
+            <a href="schedule.html">
+              <li>Schedule</li>
+            </a>
+
+            <a href="todo.html">
+              <li>To do</li>
+            </a>
+
+            <a href="memo.html">
+              <li>Memo</li>
+            </a>
+          </ul>
+        </div>
+      </nav>
+    </div>
     <!-- 메뉴 바 끝 -->
 
     <main>
@@ -67,7 +68,7 @@
       <section class="add-todo">
         <div class="border-container">
           <!-- 수정 -->
-          <textarea class="txtarea" name=""  rows="10"></textarea> 
+          <textarea class="txtarea" name="" rows="10"></textarea>
           <div class="buttons">
             <button class="btn toggle">취소</button>
             <button class="btn add">추가하기</button>

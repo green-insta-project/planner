@@ -345,7 +345,6 @@ main {
 
 .main-header {
   font-family: "Poiret One", cursive;
-  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -371,7 +370,6 @@ main {
 .main-container {
   overflow-y: auto;
   max-height: 80vh;
-  margin-top: 78px;
 }
 
 .add-on .main-container {
@@ -488,7 +486,7 @@ main {
 }
 
 .incomplete .todo {
-  background-color: var(--color-gray-light);
+  background-color: var(--color-gray);
 }
 
 .complete .todo {
@@ -592,7 +590,6 @@ main {
   }
   .main-header {
     font-family: "Poiret One", cursive;
-    position: absolute;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -616,7 +613,6 @@ main {
   .main-container {
     overflow-y: auto;
     max-height: 80vh;
-    margin-top: 78px;
   }
   .add-on .main-container {
     margin-top: 0;
@@ -716,7 +712,7 @@ main {
     margin-bottom: calc(var(--base-space) / 2);
   }
   .incomplete .todo {
-    background-color: var(--color-gray-light);
+    background-color: var(--color-gray);
   }
   .complete .todo {
     background-color: var(--color-gray);
@@ -773,7 +769,7 @@ main {
   }
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   /* Layout */
   body {
     width: 100%;
@@ -810,7 +806,6 @@ main {
   }
   .main-header {
     font-family: "Poiret One", cursive;
-    position: absolute;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -834,7 +829,6 @@ main {
   .main-container {
     overflow-y: auto;
     max-height: 80vh;
-    margin-top: 78px;
   }
   .add-on .main-container {
     margin-top: 0;
@@ -934,7 +928,7 @@ main {
     margin-bottom: calc(var(--base-space) / 2);
   }
   .incomplete .todo {
-    background-color: var(--color-gray-light);
+    background-color: var(--color-gray);
   }
   .complete .todo {
     background-color: var(--color-gray);
@@ -988,6 +982,54 @@ main {
   .btn.check,
   .btn.delete-all {
     padding: 0;
+  }
+  .navbar-menu .menubox {
+    left: 0;
+    width: 100%;
+    height: 0;
+    -webkit-transition: 0.7s;
+    transition: 0.7s;
+  }
+  .navbar-menu .menubox .item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: none;
+    padding: 0;
+    -webkit-transition: .5s;
+    transition: .5s;
+  }
+  .navbar-menu .menubox .item a {
+    width: 100%;
+    padding: 10px;
+  }
+  .navbar-menu .menubox .item a li {
+    padding: 0;
+    font-size: 24px;
+  }
+  .navbar-menu .menubox.visible {
+    height: 100%;
+  }
+  .navbar-menu .menubox.visible .item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .navbar-menu .burger-menu.visible {
+    margin-left: 20px;
+  }
+  .navbar-menu .burger-menu .bar {
+    width: 80%;
   }
 }
 /*# sourceMappingURL=todo.css.map */
