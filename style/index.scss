@@ -186,20 +186,17 @@ main{
 
 .userbox{
   width: 100%;
-  // height: 10%;
-  // margin-top: 5%;
+  height: 50px;
   background: linear-gradient(to right, #c8beb5, #bdbcbb);
   ul{
     @include flexbox(space-around, center);
     width: 50%;
     margin: 0 auto;
-    
     li{
       width: calc(100%/5);
-      font-size: 1.5rem;
-      padding: 15px 10px;
+      font-size: 0.8rem;
+      padding: 0 8px;
       cursor: pointer;
-
       a{
         position: relative;
         @include column-flexbox;
@@ -280,7 +277,9 @@ main{
       width: 80%;
     }
   }
-
+  .userbox ul li a .user{ 
+    font-size: 0.8rem;
+  }
 }
 
 
@@ -307,7 +306,7 @@ main{
       }
     }
     &.visible{
-      height: 90%;
+      height: 100%;
       .item{
         display: flex;
       }
@@ -342,7 +341,7 @@ main{
     font-size: $font-size-48;
   }
   .userbox {
-    height: 10%;
+    height: 40px;
     ul{
       width: 100%;
       height: 100%;
@@ -351,7 +350,9 @@ main{
       }
     }
   }
-  .userbox ul li a .user{ font-size: $font-size-16;}
+  .userbox ul li a .user{ 
+    font-size: 0.7rem;
+  }
   .navbar-menu .burger-menu .bar{ width: 80%; }
 }
 

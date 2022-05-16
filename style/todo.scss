@@ -53,6 +53,10 @@
 
   // 메뉴바
 
+  body{
+    overflow-y: hidden ;
+  }
+
   .navbar-menu{
     width: 100%; height: 60px;
     @include flexbox(flex-start);
@@ -133,54 +137,7 @@
 }
 
 
-
-
-
-
-.menubox{
-@include column-flexbox;
-position: absolute;
-top: 0; left: -25%;
-width: 25%; height: 100%;
-background-color: $color-main;
-transition: 0.5s;
-z-index: inherit;
-
-&.visible{
-  left: 0;
-  border: 1px solid #ddd;
-}
-}
-
-
-.item{
-width: 100%;
-padding: 0 30px;
-margin: 0;
-text-align: center;
-cursor: pointer;
-
-a{
-  text-decoration: none;
-  color: #5d5c58;
-  font-size: $font-size-32;
-  font-style: italic;
-  font-weight: 500;
-  padding-left: 10px;
-  transition: .3s;
-
-  &:hover{
-    color: #fff;
-  }
-
-  li{
-    font-family: $font-con;
-    padding: 10px;
-  }
-}
-}
-}
-
+  
 // 메뉴바 끝
 
 
@@ -250,13 +207,13 @@ a{
   }
   
   /* Layout */
-  body {
+  .main-wrap {
     display: flex;
     flex-direction: column;
-    // justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     background-color: var(--color-gray-light);
+    padding-top: 200px;
   }
   
   .categories {
@@ -302,7 +259,7 @@ a{
   
   .main-container {
     overflow-y: auto;
-    max-height: 80vh;
+    max-height: 500px;
   }
   .add-on .main-container {
     margin-top: 0;
@@ -315,7 +272,6 @@ a{
   }
   .add-on .add-todo {
     display: block;
-    margin-top: 78px;
     background-color: var(--color-blue);
   }
   .add-todo .buttons {
@@ -463,13 +419,28 @@ a{
 
 // 아이패드 기준 768px - 1024px
 @media (max-width: 1024px){
+
+
+  .navbar-menu{
+    .burger-menu{
+        &.visible{
+            margin-left: 20%; 
+        }
+    }
+    .menubox{
+        width: 30%;
+        left: -30%;
+    }
+}
+
+
 /* Layout */
-body {
+.main-wrap {
   display: flex;
   flex-direction: column;
   // justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   background-color: var(--color-gray-light);
   margin: 0 auto;
 }
@@ -516,7 +487,7 @@ main {
 
 .main-container {
   overflow-y: auto;
-  max-height: 80vh;
+  max-height: 500px;
 }
 .add-on .main-container {
   margin-top: 0;
@@ -529,7 +500,6 @@ main {
 }
 .add-on .add-todo {
   display: block;
-  margin-top: 78px;
   background-color: var(--color-blue);
 }
 .add-todo .buttons {
@@ -672,13 +642,13 @@ main {
  // 모바일 기준 360px - 767px
 @media screen and (max-width: 767px){
 /* Layout */
-body {
+.main-wrap {
   width: 100%;
   display: flex;
   flex-direction: column;
   // justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   margin: 0 auto;
   background-color: var(--color-gray-light);
 
@@ -728,7 +698,7 @@ main {
 
 .main-container {
   overflow-y: auto;
-  max-height: 80vh;
+  max-height: 500px;
 }
 .add-on .main-container {
   margin-top: 0;
@@ -741,7 +711,6 @@ main {
 }
 .add-on .add-todo {
   display: block;
-  margin-top: 78px;
   background-color: var(--color-blue);
 }
 .add-todo .buttons {
@@ -879,10 +848,6 @@ main {
 }
 
 
-
-
-
-
 .navbar-menu{
   .menubox{
       left: 0;
@@ -917,9 +882,5 @@ main {
 
 
 
-} 
 
-
-
-
- 
+}
