@@ -104,8 +104,8 @@
     background: $color-main;
 
     .content-wrap{
-        width: 85%;
-        height: 85%;
+        width: 1000px;
+        height: 700px;
         margin:0 auto;
         border: 4px solid $color-green;
         border-radius: 20px;
@@ -150,7 +150,7 @@
 }
 
 .todo-wrap{
-    padding: 0 0 0 40px;
+    // padding: 0 0 0 40px;
         .todo-title{
             font-size: 20px;
             font-weight: 100;
@@ -159,17 +159,21 @@
         }
     .input-form{
         .input-box{
-            width: 70%;
+            width: calc(100% - 75px);
             margin-right: 20px;
             height: auto; 
             background: rgba(235, 236, 220, 0.19);
             color: $color-green;
             line-height : normal;
             padding: .8em .5em 0 0; 
-            font-family: inherit;
             border: 0; 
             border-bottom: 1px dashed $color-gray;
             border-radius: 0; 
+            padding: 7px;
+        }
+        .input-box::placeholder{
+            font-family: $font-main;
+            font-size: 1.2em;
         }
         .input-data{
             cursor: pointer;
@@ -187,25 +191,26 @@
         }
     }
     .input-list{
-        padding: 0;
+        
         list-style: none;
-        margin: 0;
+        margin-top: 15px;
         padding-left: 15px;
         width: 90%;
         height: 200px;
-        overflow: scroll;
+        overflow: auto;
         
         li{
-            width: 80%;
+            width: 95%;
             display: flex;
             align-items: center;
             span{
                 font-family: $font-con;
                 display: inline-block;
-                font-size: 13px;
+                font-size: 0.9rem;
                 width: 500px;
                 margin: 0 10px 0 -10px;
                 color: #ddaf35;
+                font-weight: 700;
             }
             .checked{
                 color: #FFFFFF;
@@ -310,7 +315,7 @@
         position: relative;
         border-radius: 10px;
         top: 0;
-        width: 320px;
+        width: 350px;
         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
         
         #amend-form{
@@ -350,8 +355,64 @@
 
 
 
+
+
+// 1100px 미만
+@media screen and (max-width: 1100px) {
+    .main .content-wrap {        
+        width: 900px;
+        height: 700px;
+    }
+}
+// 1000px 미만
+@media screen and (max-width: 1000px) {
+    .main .content-wrap {        
+        width: 800px;
+        height: 700px;
+    }
+}
+// 900px 미만
+@media screen and (max-width: 900px) {
+    .main .content-wrap {        
+        width: 700px;
+        height: 700px;
+    }
+}
+
+// 1024px 미만(테블릿 버전)
+@media screen and (max-width: 1024px) {
+    .navbar-menu{
+        .burger-menu{
+            &.visible{
+                margin-left: 20%; 
+            }
+        }
+        .menubox{
+            width: 30%;
+            left: -30%;
+        }
+    }
+    
+}
+
+
+
+
+
+@media screen and (max-width: 890px) {
+
+    .main .content-wrap{
+        width: 88%;
+        height: 88%;
+    }
+}
+
+
+
+
+
 // 768px
-@media(min-width: 768px){
+@media(min-width: 790px){
     
     
     .main{
@@ -401,7 +462,7 @@
         margin: 0 0 10px 0;
     }
     .input-box{
-        width: 70%;
+        width: calc(100% - 75px);
         height: auto; 
         background: #0b0809;
         color: #ddaf35;
@@ -465,46 +526,10 @@
 }
 
 
-
-
-
-
-// 1024px 미만(테블릿 버전)
-@media screen and (max-width: 1024px) {
-    .navbar-menu{
-        .burger-menu{
-            &.visible{
-                margin-left: 20%; 
-            }
-        }
-        .menubox{
-            width: 30%;
-            left: -30%;
-        }
-    }
-    
-}
-
-
-
-
-
-@media screen and (max-width: 890px) {
-
-
-    .main .content-wrap{
-        width: 88%;
-        height: 88%;
-    }
-}
-
-
-
-// 768px 이하 (모바일)
-@media screen and (max-width: 768px) {
+// 790px 이하 (모바일)
+@media screen and (max-width: 790px) {
     .navbar-menu{
         .menubox{
-            // display: none;
             left: 0;
             width: 100%;
             height: 0;
@@ -512,7 +537,6 @@
             .item{
                 @include column-flexbox;
                 display: none;
-                // opacity: 0;
                 padding: 0;
                 transition: .5s;
                 a{
@@ -542,8 +566,6 @@
         padding: 100px 0;
     }
     .main .content-wrap{
-        width: 70%;
-        height: 70%;
         margin: 0 auto;
         background: $color-main;
     }
